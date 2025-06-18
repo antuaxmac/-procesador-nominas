@@ -10,7 +10,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -20,483 +20,589 @@
             justify-content: center;
             padding: 20px;
         }
-        
+
         .container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             width: 100%;
+            animation: slideUp 0.6s ease-out;
         }
-        
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
-        
+
         .header h1 {
-            color: #333;
+            color: #4a5568;
             font-size: 2.5rem;
             margin-bottom: 10px;
+            font-weight: 700;
         }
-        
+
         .header p {
-            color: #666;
+            color: #718096;
             font-size: 1.1rem;
         }
-        
+
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
-        
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
         label {
             display: block;
             margin-bottom: 8px;
+            color: #4a5568;
             font-weight: 600;
-            color: #333;
+            font-size: 0.95rem;
         }
-        
-        select, input[type="month"] {
+
+        select, input {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e1e1e1;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
         }
-        
-        select:focus, input[type="month"]:focus {
+
+        select:focus, input:focus {
             outline: none;
             border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-        
-        .upload-zone {
-            border: 3px dashed #667eea;
-            border-radius: 15px;
-            padding: 40px;
+
+        .upload-area {
+            border: 3px dashed #cbd5e0;
+            border-radius: 16px;
+            padding: 40px 20px;
             text-align: center;
-            background: #f8f9ff;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 25px;
+            background: #f8fafc;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .upload-zone:hover {
-            background: #f0f2ff;
-            border-color: #5a67d8;
+
+        .upload-area:hover {
+            border-color: #667eea;
+            background: #edf2f7;
         }
-        
-        .upload-zone.dragover {
-            background: #e6f3ff;
-            border-color: #3182ce;
+
+        .upload-area.dragover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: scale(1.02);
         }
-        
+
         .upload-icon {
             font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 15px;
+            color: #a0aec0;
+            margin-bottom: 16px;
         }
-        
+
         .upload-text {
-            font-size: 1.2rem;
-            color: #333;
-            margin-bottom: 10px;
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
         }
-        
+
         .upload-subtext {
-            color: #666;
+            color: #718096;
             font-size: 0.9rem;
         }
-        
+
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
         .file-list {
             margin-top: 20px;
         }
-        
+
         .file-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px;
-            background: #f8f9fa;
+            padding: 12px 16px;
+            background: #f7fafc;
             border-radius: 8px;
             margin-bottom: 8px;
+            border-left: 4px solid #48bb78;
         }
-        
+
         .file-name {
-            color: #333;
+            color: #2d3748;
             font-weight: 500;
         }
-        
+
         .file-size {
-            color: #666;
+            color: #718096;
             font-size: 0.9rem;
         }
-        
+
         .remove-file {
-            background: #dc3545;
-            color: white;
+            background: #fed7d7;
+            color: #e53e3e;
             border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
+            padding: 6px 12px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
         }
-        
+
+        .remove-file:hover {
+            background: #feb2b2;
+        }
+
         .process-btn {
             width: 100%;
+            padding: 16px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 15px;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
+
         .process-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
         }
-        
+
         .process-btn:disabled {
-            background: #ccc;
+            opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
-        
-        .progress {
-            margin-top: 20px;
+
+        .progress-container {
             display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
         }
-        
+
         .progress-bar {
             width: 100%;
-            height: 20px;
-            background: #e1e1e1;
-            border-radius: 10px;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
             overflow: hidden;
+            margin-bottom: 15px;
         }
-        
+
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, #48bb78, #38a169);
             width: 0%;
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
-        
-        .status {
+
+        .progress-text {
+            color: #4a5568;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .results-container {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 12px;
+        }
+
+        .success-icon {
+            color: #38a169;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .results-list {
+            list-style: none;
+        }
+
+        .results-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #c6f6d5;
+            color: #2f855a;
+        }
+
+        .results-list li:last-child {
+            border-bottom: none;
+        }
+
+        .error-container {
+            display: none;
             margin-top: 20px;
             padding: 15px;
+            background: #fed7d7;
+            border: 1px solid #feb2b2;
             border-radius: 8px;
-            display: none;
+            color: #c53030;
         }
-        
-        .status.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .status.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        .employees-info {
-            background: #e8f4f8;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .employees-info h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .employees-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 8px;
-        }
-        
-        .employee-item {
-            background: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            color: #555;
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 30px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📄 Procesador de Nóminas</h1>
-            <p>Arrastra y suelta los archivos PDF de nóminas para procesarlos automáticamente</p>
+            <h1>🧾 Procesador de Nóminas</h1>
+            <p>Sube las nóminas y se enviarán automáticamente a cada empleado</p>
         </div>
-        
-        <div class="employees-info">
-            <h3>👥 Empleados Configurados</h3>
-            <div class="employees-list">
-                <div class="employee-item">Juan Pérez</div>
-                <div class="employee-item">María García</div>
-                <div class="employee-item">Carlos López</div>
-                <div class="employee-item">Ana Martín</div>
-            </div>
-        </div>
-        
+
         <form id="nominasForm">
-            <div class="form-group">
-                <label for="mes">📅 Mes y Año</label>
-                <input type="month" id="mes" name="mes" required>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="mes">Mes:</label>
+                    <select id="mes" required>
+                        <option value="">Seleccionar mes</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ano">Año:</label>
+                    <select id="ano" required>
+                        <option value="">Seleccionar año</option>
+                        <option value="2024">2024</option>
+                        <option value="2025" selected>2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                </div>
             </div>
-            
+
             <div class="form-group">
-                <label for="tipo">📋 Tipo de Nómina</label>
-                <select id="tipo" name="tipo" required>
-                    <option value="">Seleccionar tipo...</option>
-                    <option value="ordinaria">Nómina Ordinaria</option>
+                <label for="tipo">Tipo de Nómina:</label>
+                <select id="tipo" required>
+                    <option value="">Seleccionar tipo</option>
+                    <option value="normal">Nómina Normal</option>
                     <option value="extra-junio">Paga Extra Junio</option>
                     <option value="extra-diciembre">Paga Extra Diciembre</option>
                 </select>
             </div>
-            
-            <div class="upload-zone" id="uploadZone">
-                <div class="upload-icon">📁</div>
-                <div class="upload-text">Arrastra los archivos PDF aquí</div>
-                <div class="upload-subtext">o haz clic para seleccionar archivos</div>
-                <input type="file" id="fileInput" multiple accept=".pdf" style="display: none;">
+
+            <div class="form-group">
+                <label>Archivos PDF de Nóminas:</label>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📄</div>
+                    <div class="upload-text">Arrastra aquí los archivos PDF o haz clic para seleccionar</div>
+                    <div class="upload-subtext">Puedes subir múltiples archivos PDF a la vez</div>
+                    <input type="file" id="fileInput" class="file-input" multiple accept=".pdf">
+                </div>
+                <div class="file-list" id="fileList"></div>
             </div>
-            
-            <div class="file-list" id="fileList"></div>
-            
-            <button type="submit" class="process-btn" id="processBtn" disabled>
-                🚀 Procesar Nóminas
+
+            <button type="submit" class="process-btn" id="processBtn">
+                Procesar Nóminas
             </button>
         </form>
-        
-        <div class="progress" id="progress">
+
+        <div class="progress-container" id="progressContainer">
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div style="text-align: center; margin-top: 10px;">
-                <span id="progressText">Procesando...</span>
-            </div>
+            <div class="progress-text" id="progressText">Procesando...</div>
         </div>
-        
-        <div class="status" id="status"></div>
+
+        <div class="results-container" id="resultsContainer">
+            <div class="success-icon">✅</div>
+            <h3>Nóminas enviadas correctamente:</h3>
+            <ul class="results-list" id="resultsList"></ul>
+        </div>
+
+        <div class="error-container" id="errorContainer">
+            <strong>Error:</strong> <span id="errorMessage"></span>
+        </div>
     </div>
 
     <script>
-        // CONFIGURACIÓN - Cambia esta URL por la de tu webhook de Make.com
+        // Configuración del webhook de Make.com
         const WEBHOOK_URL = 'https://hook.eu2.make.com/lwk8vmgx6ukacidnkz8skw2wczxdnehv';
-        
-        const uploadZone = document.getElementById('uploadZone');
+
+        // Variables globales
+        let selectedFiles = [];
+
+        // Referencias a elementos del DOM
+        const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const fileList = document.getElementById('fileList');
-        const processBtn = document.getElementById('processBtn');
-        const progressDiv = document.getElementById('progress');
-        const progressFill = document.getElementById('progressFill');
-        const progressText = document.getElementById('progressText');
-        const status = document.getElementById('status');
         const form = document.getElementById('nominasForm');
-        
-        let selectedFiles = [];
-        
-        // Configurar mes actual por defecto
-        const now = new Date();
-        const currentMonth = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
-        document.getElementById('mes').value = currentMonth;
-        
-        // Eventos de drag and drop
-        uploadZone.addEventListener('dragover', (e) => {
+        const progressContainer = document.getElementById('progressContainer');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const errorContainer = document.getElementById('errorContainer');
+
+        // Event listeners para drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
             e.preventDefault();
-            uploadZone.classList.add('dragover');
+            uploadArea.classList.add('dragover');
         });
-        
-        uploadZone.addEventListener('dragleave', () => {
-            uploadZone.classList.remove('dragover');
-        });
-        
-        uploadZone.addEventListener('drop', (e) => {
+
+        uploadArea.addEventListener('dragleave', (e) => {
             e.preventDefault();
-            uploadZone.classList.remove('dragover');
-            handleFiles(e.dataTransfer.files);
+            uploadArea.classList.remove('dragover');
         });
-        
-        uploadZone.addEventListener('click', () => {
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = Array.from(e.dataTransfer.files).filter(file => file.type === 'application/pdf');
+            addFiles(files);
+        });
+
+        uploadArea.addEventListener('click', () => {
             fileInput.click();
         });
-        
+
         fileInput.addEventListener('change', (e) => {
-            handleFiles(e.target.files);
+            const files = Array.from(e.target.files);
+            addFiles(files);
         });
-        
-        function handleFiles(files) {
-            Array.from(files).forEach(file => {
+
+        // Función para añadir archivos
+        function addFiles(files) {
+            files.forEach(file => {
                 if (file.type === 'application/pdf') {
                     selectedFiles.push(file);
-                    addFileToList(file);
                 }
             });
-            updateProcessButton();
-        }
-        
-        function addFileToList(file) {
-            const fileItem = document.createElement('div');
-            fileItem.className = 'file-item';
-            fileItem.innerHTML = `
-                <div>
-                    <div class="file-name">${file.name}</div>
-                    <div class="file-size">${formatFileSize(file.size)}</div>
-                </div>
-                <button type="button" class="remove-file" onclick="removeFile('${file.name}')">×</button>
-            `;
-            fileList.appendChild(fileItem);
-        }
-        
-        function removeFile(fileName) {
-            selectedFiles = selectedFiles.filter(file => file.name !== fileName);
             updateFileList();
-            updateProcessButton();
         }
-        
+
+        // Función para actualizar la lista de archivos
         function updateFileList() {
             fileList.innerHTML = '';
-            selectedFiles.forEach(file => addFileToList(file));
+            selectedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <div>
+                        <div class="file-name">${file.name}</div>
+                        <div class="file-size">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+                    </div>
+                    <button type="button" class="remove-file" onclick="removeFile(${index})">Eliminar</button>
+                `;
+                fileList.appendChild(fileItem);
+            });
         }
-        
-        function updateProcessButton() {
-            processBtn.disabled = selectedFiles.length === 0;
+
+        // Función para eliminar archivo
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            updateFileList();
         }
-        
-        function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+
+        // Función para mostrar error
+        function showError(message) {
+            errorContainer.style.display = 'block';
+            document.getElementById('errorMessage').textContent = message;
+            progressContainer.style.display = 'none';
         }
-        
-        // Procesar archivos
+
+        // Función para mostrar progreso
+        function showProgress(percentage, text) {
+            progressContainer.style.display = 'block';
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = text;
+        }
+
+        // Función para mostrar resultados
+        function showResults(results) {
+            resultsContainer.style.display = 'block';
+            const resultsList = document.getElementById('resultsList');
+            resultsList.innerHTML = '';
+            results.forEach(result => {
+                const li = document.createElement('li');
+                li.textContent = result;
+                resultsList.appendChild(li);
+            });
+            progressContainer.style.display = 'none';
+        }
+
+        // Función principal para procesar el formulario
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            if (selectedFiles.length === 0) {
-                showStatus('Por favor selecciona al menos un archivo PDF', 'error');
-                return;
-            }
+            // Ocultar mensajes anteriores
+            errorContainer.style.display = 'none';
+            resultsContainer.style.display = 'none';
             
+            // Validar campos
             const mes = document.getElementById('mes').value;
+            const año = document.getElementById('ano').value;
             const tipo = document.getElementById('tipo').value;
             
-            if (!mes || !tipo) {
-                showStatus('Por favor completa todos los campos', 'error');
+            if (!mes || !año || !tipo) {
+                showError('Por favor, completa todos los campos');
                 return;
             }
             
-            processBtn.disabled = true;
-            progressDiv.style.display = 'block';
+            if (selectedFiles.length === 0) {
+                showError('Por favor, selecciona al menos un archivo PDF');
+                return;
+            }
             
             try {
-                const filesData = await Promise.all(
-                    selectedFiles.map(async (file) => {
-                        const base64 = await fileToBase64(file);
-                        return {
-                            nombre: extractNameFromPDF(file.name),
-                            email: getEmailForEmployee(extractNameFromPDF(file.name)),
-                            pdf_data: base64,
-                            mes_ano: mes,
-                            tipo: tipo,
-                            filename: file.name
-                        };
-                    })
-                );
+                // Mostrar progreso inicial
+                showProgress(10, 'Preparando archivos...');
                 
-                updateProgress(50, 'Enviando a Make.com...');
+                // Simular datos de empleados (en producción vendrá de una base de datos)
+                const empleados = [
+                    { nombre: 'JUAN PEREZ', email: 'juan@empresa.com' },
+                    { nombre: 'MARIA GARCIA', email: 'maria@empresa.com' },
+                    { nombre: 'CARLOS LOPEZ', email: 'carlos@empresa.com' }
+                ];
+
+                // Procesar cada archivo PDF
+                const processedFiles = [];
+                
+                for (let i = 0; i < selectedFiles.length; i++) {
+                    const file = selectedFiles[i];
+                    const empleado = empleados[i % empleados.length]; // Rotar empleados si hay más PDFs
+                    
+                    showProgress(20 + (i * 30 / selectedFiles.length), `Procesando ${file.name}...`);
+                    
+                    // Convertir PDF a base64
+                    const reader = new FileReader();
+                    const base64Data = await new Promise((resolve) => {
+                        reader.onload = () => {
+                            const base64 = reader.result.split(',')[1]; // Quitar el prefijo data:application/pdf;base64,
+                            resolve(base64);
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                    
+                    processedFiles.push({
+                        nombre: empleado.nombre,
+                        email: empleado.email,
+                        pdf_data: base64Data,
+                        mes_ano: `${año}-${mes.toString().padStart(2, '0')}`,
+                        tipo: tipo,
+                        filename: `${empleado.nombre}_Nomina_${año}_${mes.toString().padStart(2, '0')}_${tipo}.pdf`
+                    });
+                }
+                
+                showProgress(60, 'Enviando a Make.com...');
+                
+                // Enviar datos a Make.com
+                const payload = {
+                    archivos: processedFiles,
+                    mes: parseInt(mes),
+                    año: parseInt(año),
+                    tipo: tipo,
+                    timestamp: new Date().toISOString()
+                };
+                
+                console.log('Enviando payload:', payload);
                 
                 const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        archivos: filesData,
-                        mes_ano: mes,
-                        tipo: tipo,
-                        total_archivos: filesData.length
-                    })
+                    body: JSON.stringify(payload)
                 });
                 
-                updateProgress(100, 'Completado!');
+                showProgress(80, 'Procesando en Make.com...');
                 
-                if (response.ok) {
-                    showStatus(`✅ ¡Procesamiento completado! Se han enviado ${filesData.length} nóminas.`, 'success');
-                    selectedFiles = [];
-                    updateFileList();
-                    updateProcessButton();
-                } else {
-                    throw new Error('Error en el servidor');
+                if (!response.ok) {
+                    throw new Error(`Error del servidor: ${response.status}`);
                 }
                 
-            } catch (error) {
-                showStatus('❌ Error al procesar las nóminas: ' + error.message, 'error');
-            } finally {
-                processBtn.disabled = false;
+                const result = await response.json();
+                
+                showProgress(100, 'Completado');
+                
+                // Mostrar resultados
+                const successMessages = processedFiles.map(file => 
+                    `✅ ${file.nombre} - ${file.filename}`
+                );
+                
                 setTimeout(() => {
-                    progressDiv.style.display = 'none';
-                    updateProgress(0, 'Procesando...');
-                }, 2000);
+                    showResults(successMessages);
+                }, 1000);
+                
+                // Limpiar formulario
+                selectedFiles = [];
+                updateFileList();
+                form.reset();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Error al procesar las nóminas: ' + error.message);
             }
         });
-        
-        function fileToBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result.split(',')[1]);
-                reader.onerror = error => reject(error);
-            });
-        }
-        
-        function extractNameFromPDF(filename) {
-            // Lógica simple para extraer nombre del archivo
-            // Puedes ajustar según el formato de tus archivos
-            return filename.replace('.pdf', '').replace(/_/g, ' ').toUpperCase();
-        }
-        
-        function getEmailForEmployee(name) {
-            // Mapeo simple de nombres a emails
-            // En producción, esto vendría de una base de datos
-            const employees = {
-                'JUAN PEREZ': 'juan.perez@empresa.com',
-                'MARIA GARCIA': 'maria.garcia@empresa.com',
-                'CARLOS LOPEZ': 'carlos.lopez@empresa.com',
-                'ANA MARTIN': 'ana.martin@empresa.com'
-            };
-            return employees[name] || 'admin@empresa.com';
-        }
-        
-        function updateProgress(percent, text) {
-            progressFill.style.width = percent + '%';
-            progressText.textContent = text;
-        }
-        
-        function showStatus(message, type) {
-            status.textContent = message;
-            status.className = `status ${type}`;
-            status.style.display = 'block';
-            
-            setTimeout(() => {
-                status.style.display = 'none';
-            }, 5000);
-        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            // Establecer mes actual por defecto
+            const currentMonth = new Date().getMonth() + 1;
+            document.getElementById('mes').value = currentMonth;
+        });
     </script>
 </body>
 </html>
