@@ -573,18 +573,26 @@
                     throw new Error(`Error del servidor: ${response.status}`);
                 }
                 
-                const result = await response.json();
-                
-                showProgress(100, 'Completado');
-                
-                // Mostrar resultados
-                const successMessages = processedFiles.map(file => 
-                    `✅ ${file.nombre} - ${file.filename}`
-                );
-                
-                setTimeout(() => {
-                    showResults(successMessages);
-                }, 1000);
+                // Make.com puede responder con texto plano "Accepted" o JSON
+let result;
+const responseText = await response.text();
+try {
+    result = JSON.parse(responseText);
+} catch (e) {
+    // Si no es JSON válido, usamos el texto tal como es
+    result = { message: responseText };
+}
+
+showProgress(100, 'Completado');
+
+// Mostrar resultados
+const successMessages = processedFiles.map(file => 
+    `✅ ${file.nombre} - ${file.filename}`
+);
+
+setTimeout(() => {
+    showResults(successMessages);
+}, 1000);
                 
                 // Limpiar formulario
                 selectedFiles = [];
